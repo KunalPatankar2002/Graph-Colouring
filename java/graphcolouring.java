@@ -15,39 +15,27 @@ public class graphcolouring {
             System.out.println("\nAdjacency list of vertex " + i);
             System.out.print("head");
             for (int j = 0; j < adj.get(i).size(); j++) {
-                System.out.print(" -> "
-                        + adj.get(i).get(j));
+                System.out.print(" -> " + adj.get(i).get(j));
             }
             System.out.println();
         }
     }
 
-    // static int assignLowestColour(ArrayList<Integer> vertex){
-    // int colour;
-    // while()
-    // vertex.iterator();
-    // return 0;
-    // }
-
     static void colourGraph(ArrayList<ArrayList<Integer>> graph, int v) {
         int[] vertexColour = new int[v];
         ArrayList<Integer> colours = new ArrayList<Integer>();
-        // ArrayList<Integer> availcolours = new ArrayList<Integer>();
-
         Arrays.fill(vertexColour, -1);
         int i = 0;
+
         vertexColour[i++] = 0;
         while (true) {
             if (IntStream.of(vertexColour).anyMatch(x -> x == -1)) {
-
                 ArrayList<Integer> availcolours = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5, 6));
                 for (int elem : graph.get(i)) {
                     if (vertexColour[elem] != -1) {
                         colours.add(vertexColour[elem]);
                     }
-
                 }
-                // System.out.println(colours);
                 availcolours.removeAll(colours);
                 Collections.sort(availcolours);
                 vertexColour[i] = availcolours.get(0);
@@ -64,30 +52,28 @@ public class graphcolouring {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Number of Vertices");
-        int vertices = 5;// sc.nextInt(), ch = 1;
+        int vertices = sc.nextInt(), ch = 1;
 
         ArrayList<ArrayList<Integer>> graph = new ArrayList<ArrayList<Integer>>(vertices);
         for (int i = 0; i < vertices; i++)
             graph.add(new ArrayList<Integer>());
-        // while (ch != 0) {
-        // System.out.println("Enter the two vertices of the edge");
-        // int n = sc.nextInt(), m = sc.nextInt();
-        // addEdge(graph, n, m);
-        // System.out.println("Enter 0 to stop input of edges\n1 to continue");
-        // ch = sc.nextInt();
-        // }
+        while (ch != 0) {
+            System.out.println("Enter the two vertices of the edge");
+            int n = sc.nextInt(), m = sc.nextInt();
+            addEdge(graph, n, m);
+            System.out.println("Enter 0 to stop input of edges\n1 to continue");
+            ch = sc.nextInt();
+        }
 
-        addEdge(graph, 0, 1);
-        addEdge(graph, 0, 4);
-        addEdge(graph, 1, 2);
+        // addEdge(graph, 0, 1);
+        // addEdge(graph, 0, 4);
+        // addEdge(graph, 1, 2);
 
-        addEdge(graph, 1, 4);
-        addEdge(graph, 2, 3);
-        addEdge(graph, 3, 4);
+        // addEdge(graph, 1, 4);
+        // addEdge(graph, 2, 3);
+        // addEdge(graph, 3, 4);
         colourGraph(graph, vertices);
-        // printGraph(graph);
-        // System.out.println(graph.get(0).get(0));
-
+        printGraph(graph);
         sc.close();
     }
 }
