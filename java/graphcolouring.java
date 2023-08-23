@@ -23,6 +23,7 @@ public class graphcolouring {
 
     static void colourGraph(ArrayList<ArrayList<Integer>> graph, int v) {
         int[] vertexColour = new int[v]; // array to store the colour of each vertex
+        String[] colours = { "red", "blue", "yellow", "purple", "green", "orange" };
         Arrays.fill(vertexColour, -1); // initialise the array to -1
         ArrayList<Integer> usedColours = new ArrayList<Integer>(); // stores the colours that have been used in previous
         // vertices
@@ -47,7 +48,7 @@ public class graphcolouring {
         }
         i = 0;
         for (int a : vertexColour) // prints the colour of each vertex
-            System.out.println("Colour of vertex " + i++ + " is " + a);
+            System.out.println("Colour of vertex " + i++ + " is " + colours[a]);
         System.out.println("Chromatic number is " + (Arrays.stream(vertexColour).max().getAsInt() + 1));
     }
 
@@ -68,17 +69,21 @@ public class graphcolouring {
         // }
 
         addEdge(graph, 0, 1);
-        addEdge(graph, 0, 3);
-        addEdge(graph, 0, 5);
-        addEdge(graph, 0, 6);
+        addEdge(graph, 0, 2);
+        // addEdge(graph, 0, 6);
+        // addEdge(graph, 0, 7);
         addEdge(graph, 1, 2);
-        addEdge(graph, 1, 4);
+        addEdge(graph, 1, 3);
+        // addEdge(graph, 1, 6);
+        // addEdge(graph, 1, 7);
         addEdge(graph, 2, 3);
-        addEdge(graph, 2, 5);
-        addEdge(graph, 2, 6);
+        // addEdge(graph, 2, 5);
+        // addEdge(graph, 2, 6);
+        // addEdge(graph, 2, 7);
         addEdge(graph, 3, 4);
-        addEdge(graph, 4, 5);
-        addEdge(graph, 4, 6);
+        // addEdge(graph, 3, 5);
+        // addEdge(graph, 3, 6);
+        // addEdge(graph, 3, 7);
         colourGraph(graph, vertices);
         // printGraph(graph);
         sc.close();
